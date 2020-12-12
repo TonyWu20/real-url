@@ -4,7 +4,7 @@
 
 import asyncio
 import danmaku
-
+from fire import Fire
 
 async def printer(q):
     while True:
@@ -19,10 +19,11 @@ async def main(url):
     asyncio.create_task(printer(q))
     await dmc.start()
 
+def main_cli(url):
+    asyncio.run(main(url))
 
-a = input('请输入直播间地址：\n')
-asyncio.run(main(a))
-
+if __name__ == "__main__":
+    Fire(main_cli)
 # 虎牙直播：https://www.huya.com/11352915
 # 斗鱼直播：https://www.douyu.com/85894
 # B站直播：https://live.bilibili.com/70155
